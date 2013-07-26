@@ -417,7 +417,7 @@ static irqreturn_t wdog_bark_handler(int irq, void *dev_id)
 		__raw_readl(wdog_dd->base + WDT0_EN),
 		__raw_readl(wdog_dd->base + WDT0_BARK_TIME),
 		__raw_readl(wdog_dd->base + WDT0_BITE_TIME));
-	panic("Failed to cause a watchdog bite! - Falling back to kernel panic!");
+	PR_BUG("Failed to cause a watchdog bite! - Falling back to kernel panic!");
 	return IRQ_HANDLED;
 }
 
