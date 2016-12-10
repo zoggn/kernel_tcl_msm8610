@@ -168,7 +168,7 @@ static void __init of_mbmver(u32 *ver)
 static inline void of_mbmver(u32 *ver) { }
 #endif
 
-u32 bi_mbm_version(void)
+u32 __init bi_mbm_version(void)
 {
 	u32 version = 0xFFFFFFFF;
 
@@ -536,7 +536,7 @@ static u64 bi_serial(void)
  * and hwrevision.
  */
 
-static int get_bootinfo(char *buf, char **start,
+static int __init get_bootinfo(char *buf, char **start,
 						off_t offset, int count,
 						int *eof, void *data)
 {
