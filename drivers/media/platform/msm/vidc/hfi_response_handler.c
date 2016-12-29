@@ -264,7 +264,7 @@ static void hfi_process_event_notify(
 		break;
 	case HFI_EVENT_SESSION_PROPERTY_CHANGED:
 		dprintk(VIDC_INFO, "HFI_EVENT_SESSION_PROPERTY_CHANGED[%u]\n",
-			pkt->session_id
+			pkt->session_id);
 		break;
 	case HFI_EVENT_RELEASE_BUFFER_REFERENCE:
 		dprintk(VIDC_INFO, "HFI_EVENT_RELEASE_BUFFER_REFERENCE[%u]\n",

@@ -392,7 +392,7 @@ static int wait_for_sess_signal_receipt(struct msm_vidc_inst *inst,
 	if (!rc) {
 		dprintk(VIDC_ERR,
 			"%s: Wait interrupted or timeout[%u]: %d\n",
-			__func__, (u32)inst->session, SESSION_MSG_INDEX(cmd))
+			__func__, (u32)inst->session, SESSION_MSG_INDEX(cmd));
 		msm_comm_recover_from_session_error(inst);
 		rc = -EIO;
 	} else {
@@ -1490,7 +1490,7 @@ static int msm_comm_init_core_done(struct msm_vidc_inst *inst)
 		msecs_to_jiffies(msm_vidc_hw_rsp_timeout));
 	if (!rc) {
 		dprintk(VIDC_ERR, "%s: Wait interrupted or timeout: %d\n",
-			__func__, SYS_MSG_INDEX(SYS_INIT_DONE)
+			__func__, SYS_MSG_INDEX(SYS_INIT_DONE));
 		rc = -EIO;
 		goto exit;
 	} else {
