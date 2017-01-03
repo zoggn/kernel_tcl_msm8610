@@ -257,7 +257,8 @@ static void hfi_process_event_notify(
 			hfi_process_session_error(callback, device_id, pkt);
 		break;
 	case HFI_EVENT_SESSION_SEQUENCE_CHANGED:
-		dprintk(VIDC_INFO, "HFI_EVENT_SESSION_SEQUENCE_CHANGED");
+		dprintk(VIDC_INFO, "HFI_EVENT_SESSION_SEQUENCE_CHANGED[%u]\n",
+			pkt->session_id);
 		if (!validate_session_pkt(sessions, sess, session_lock))
 			hfi_process_sess_evt_seq_changed(callback,
 				device_id, pkt);
