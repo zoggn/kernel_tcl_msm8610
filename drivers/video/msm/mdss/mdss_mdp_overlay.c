@@ -2743,25 +2743,15 @@ static int mdss_mdp_overlay_splash_image(struct msm_fb_data_type *mfd,
 	struct mdp_overlay req;
 	int rc = 0;
 	struct fb_info *fbi = NULL;
-	int image_len = SPLASH_IMAGE_WIDTH * SPLASH_IMAGE_HEIGHT * SPLASH_IMAGE_BPP;
+	int image_len = 0;
 
-	if (!mfd || !mfd->fbi || !pipe_ndx) {
+	if (!mfd || !mfd->fbi || !mfd->fbi->screen_base || !pipe_ndx) {
 		pr_err("Invalid input parameter\n");
 		return -EINVAL;
 	}
-	/*
-	 * Allocate fb memory here for splash screen to display.
-	 * It gets removed once the splash screen thread stops.
-	 */
-	if (!mfd->fbi->screen_base) {
-		rc = mdss_fb_alloc_fb_ion_memory(mfd, image_len);
-		if (rc < 0) {
-			pr_err("Invalid input parameter\n");
-			return -EINVAL;
-		}
-	}
 
 	fbi = mfd->fbi;
+	image_len = SPLASH_IMAGE_WIDTH * SPLASH_IMAGE_HEIGHT * SPLASH_IMAGE_BPP;
 
 	if (SPLASH_IMAGE_WIDTH > fbi->var.xres ||
 			SPLASH_IMAGE_HEIGHT > fbi->var.yres ||
